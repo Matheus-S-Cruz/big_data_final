@@ -166,6 +166,21 @@ def main():
         cols_categoricas = ["canal", "dispositivo"]
         features_usadas = cols_numericas + cols_categoricas
 
+        # Peso de classe: compradores são raros (~5%). Sem balanceamento, o modelo
+        # aprende a prever sempre "não comprou" (precisão/recall da classe positiva = 0).
+        # O peso inversamente proporcional à frequência faz o modelo passar a apontar
+        # compradores, tornando as métricas da classe positiva úteis.
+        n_total = dataset.count()
+        n_positivos = dataset.filter(F.col("comprou") == 1).count()
+        n_positivos = max(n_positivos, 1)
+        peso_positivo = (n_total - n_positivos) / n_positivos
+        dataset = dataset.withColumn(
+            "peso",
+            F.when(F.col("comprou") == 1, F.lit(float(peso_positivo))).otherwise(
+                F.lit(1.0)
+            ),
+        )
+
         # Pipeline de classificação.
         indexers = [
             StringIndexer(inputCol=c, outputCol=f"{c}_idx", handleInvalid="keep")
@@ -180,7 +195,10 @@ def main():
             outputCol="features",
         )
         lr = LogisticRegression(
-            featuresCol="features", labelCol="comprou", maxIter=50
+            featuresCol="features",
+            labelCol="comprou",
+            weightCol="peso",
+            maxIter=50,
         )
         pipeline = Pipeline(stages=indexers + encoders + [assembler, lr])
 
@@ -194,9 +212,7 @@ def main():
             labelCol="comprou", rawPredictionCol="rawPrediction",
             metricName="areaUnderROC",
         ).evaluate(pred_teste)
-        f1 = MulticlassClassificationEvaluator(
-            labelCol="comprou", predictionCol="prediction", metricName="f1"
-        ).evaluate(pred_teste)
+        # F1, precisão e recall referem-se à CLASSE POSITIVA (sessão com compra), seção 5.4.11.
         precisao = MulticlassClassificationEvaluator(
             labelCol="comprou", predictionCol="prediction",
             metricName="precisionByLabel", metricLabel=1.0,
@@ -204,6 +220,10 @@ def main():
         recall = MulticlassClassificationEvaluator(
             labelCol="comprou", predictionCol="prediction",
             metricName="recallByLabel", metricLabel=1.0,
+        ).evaluate(pred_teste)
+        f1 = MulticlassClassificationEvaluator(
+            labelCol="comprou", predictionCol="prediction",
+            metricName="fMeasureByLabel", metricLabel=1.0,
         ).evaluate(pred_teste)
 
         # ---- propensao_sessao: probabilidade da classe positiva (compra) ----
