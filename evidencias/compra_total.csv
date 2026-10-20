@@ -1,0 +1,8 @@
+etapa,sessoes,conversao_sobre_topo,conversao_etapa_anterior
+view_item_list,5258,1.0,
+select_item,1719,0.3269,0.3269
+add_to_cart,1291,0.2455,0.751
+view_cart,1255,0.2387,0.9721
+begin_checkout,912,0.1734,0.7267
+add_payment_info,684,0.1301,0.75
+purchase,573,0.109,0.8377

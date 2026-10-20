@@ -1,0 +1,21 @@
+session_id,user_pseudo_id,inicio,fim,duracao_segundos,eventos,scroll_maximo,video_maximo,fez_lead,comprou,canal,dispositivo
+anon-1010fbf9_1,anon-1010fbf9,2026-09-03 21:18:28.511,2026-09-03 21:20:23.178,115,8,75,,0,0,google / cpc,mobile
+anon-46f13106_1,anon-46f13106,2026-09-03 16:08:55.353,2026-09-03 16:10:39.652,104,6,90,,0,0,direct / (none),desktop
+anon-4f12d502_1,anon-4f12d502,2026-09-03 06:22:30.861,2026-09-03 06:27:46.790,316,12,90,50.0,0,0,instagram / paid_social,mobile
+anon-4fa01ffa_1,anon-4fa01ffa,2026-09-03 17:58:56.179,2026-09-03 17:58:58.263,2,2,25,,0,0,google / cpc,mobile
+anon-59604506_1,anon-59604506,2026-09-03 08:36:49.132,2026-09-03 08:37:16.987,27,2,25,,0,0,newsletter / email,mobile
+anon-7196a830_1,anon-7196a830,2026-09-03 16:30:43.019,2026-09-03 16:31:27.664,44,3,25,,0,0,direct / (none),desktop
+anon-7a0e25d6_1,anon-7a0e25d6,2026-09-03 18:50:04.506,2026-09-03 18:53:04.334,180,9,90,25.0,0,0,instagram / paid_social,desktop
+anon-8a56974e_1,anon-8a56974e,2026-09-03 20:20:38.860,2026-09-03 20:26:39.774,361,12,75,100.0,0,0,google / organic,mobile
+anon-9102673d_1,anon-9102673d,2026-09-03 16:11:46.946,2026-09-03 16:14:06.113,140,9,90,25.0,0,0,direct / (none),mobile
+anon-9fa0aa69_1,anon-9fa0aa69,2026-09-03 06:12:30.060,2026-09-03 06:18:37.751,367,12,90,100.0,0,0,google / cpc,mobile
+anon-cb361e96_1,anon-cb361e96,2026-09-03 12:47:48.686,2026-09-03 12:55:53.376,485,22,75,25.0,0,1,newsletter / email,desktop
+anon-d5e9aad5_2,anon-d5e9aad5,2026-09-03 11:06:33.167,2026-09-03 11:08:12.040,99,5,75,,0,0,direct / (none),desktop
+anon-db2b1ffa_1,anon-db2b1ffa,2026-09-03 10:47:21.423,2026-09-03 10:49:37.487,136,6,90,,0,0,google / organic,desktop
+anon-e0ac081f_1,anon-e0ac081f,2026-09-03 18:45:18.548,2026-09-03 18:49:14.543,236,9,90,25.0,1,0,google / cpc,mobile
+anon-055d13d8_1,anon-055d13d8,2026-09-07 21:55:15.049,2026-09-07 21:58:20.014,185,10,75,,0,0,google / cpc,desktop
+anon-05bb3bb8_2,anon-05bb3bb8,2026-09-07 21:22:54.324,2026-09-07 21:23:38.204,44,4,50,,0,0,google / organic,mobile
+anon-1ca2acb5_1,anon-1ca2acb5,2026-09-07 21:25:50.803,2026-09-07 21:30:06.884,256,10,75,50.0,0,0,instagram / paid_social,desktop
+anon-1e3d5432_2,anon-1e3d5432,2026-09-07 15:56:55.324,2026-09-07 16:01:17.118,262,11,90,10.0,0,0,google / organic,tablet
+anon-4ff77c0c_1,anon-4ff77c0c,2026-09-07 13:13:10.778,2026-09-07 13:21:09.417,479,16,75,100.0,0,0,google / organic,mobile
+anon-69a39bcb_1,anon-69a39bcb,2026-09-07 09:20:33.641,2026-09-07 09:23:41.435,188,8,50,25.0,0,0,google / cpc,mobile

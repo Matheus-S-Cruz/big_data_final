@@ -1,0 +1,16 @@
+plano,canal,pedidos,pedidos_com_reembolso,taxa_reembolso
+PLANO-BASICO,direct / (none),40,0,0.0
+PLANO-BASICO,google / cpc,74,7,0.0946
+PLANO-BASICO,google / organic,36,4,0.1111
+PLANO-BASICO,instagram / paid_social,26,5,0.1923
+PLANO-BASICO,newsletter / email,17,0,0.0
+PLANO-PREMIUM,direct / (none),18,0,0.0
+PLANO-PREMIUM,google / cpc,46,2,0.0435
+PLANO-PREMIUM,google / organic,23,2,0.087
+PLANO-PREMIUM,instagram / paid_social,15,6,0.4
+PLANO-PREMIUM,newsletter / email,18,1,0.0556
+PLANO-PRO,direct / (none),54,2,0.037
+PLANO-PRO,google / cpc,101,11,0.1089
+PLANO-PRO,google / organic,42,3,0.0714
+PLANO-PRO,instagram / paid_social,24,4,0.1667
+PLANO-PRO,newsletter / email,39,1,0.0256
