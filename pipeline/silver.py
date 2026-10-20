@@ -110,17 +110,8 @@ try:
         F.try_to_timestamp(F.col("event_ts")),
     )
 
+    
     # 3. Primeiras regras de validação.
-    (
-        "timestamp ausente ou futuro",
-        F.col("event_ts").isNull()
-        | F.col("_instante_ingestao").isNull()
-        | (
-            F.col("event_ts")
-            > F.col("_instante_ingestao").cast("timestamp")
-        ),
-    ),
-
     regras = [
         (
             "evento fora do catálogo",
@@ -129,7 +120,11 @@ try:
         (
             "timestamp ausente ou futuro",
             F.col("event_ts").isNull()
-            | (F.col("event_ts") > agora),
+            | F.col("_instante_ingestao").isNull()
+            | (
+                F.col("event_ts")
+                > F.col("_instante_ingestao").cast("timestamp")
+            ),
         ),
         (
             "transação sem id",
@@ -151,11 +146,11 @@ try:
         (
             "marco fora do padrão",
             (
-                (F.col("percent_scrolled").isNotNull())
+                F.col("percent_scrolled").isNotNull()
                 & ~F.col("percent_scrolled").isin(25, 50, 75, 90)
             )
             | (
-                (F.col("video_percent").isNotNull())
+                F.col("video_percent").isNotNull()
                 & ~F.col("video_percent").isin(0, 10, 25, 50, 75, 100)
             ),
         ),
