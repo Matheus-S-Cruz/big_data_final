@@ -1,15 +1,8 @@
 
-import sys
-from pathlib import Path
-
-# Adiciona a raiz do projeto ao caminho de importação do Python.
-RAIZ_PROJETO = Path(__file__).resolve().parent.parent
-sys.path.insert(0, str(RAIZ_PROJETO))
-
 from pyspark.sql import functions as F
 from pyspark.sql.window import Window
 
-from pipeline.comum import (
+from comum import (
     criar_sessao,
     caminho,
     exigir_camada,
