@@ -249,7 +249,7 @@ def main():
         print("taxa_reembolso:")
         taxa_reembolso.show(20, False)
         print("adesao_order_bump:")
-        adesao_order_bump.show(False)
+        adesao_order_bump.show(truncate=False)
         print("lead_para_compra:")
         lead_para_compra.show(20, False)
 
