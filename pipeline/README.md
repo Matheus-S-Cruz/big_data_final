@@ -4,6 +4,43 @@ Seu código vai aqui: um job por camada, como pede o [enunciado](../docs/ENUNCIA
 
 Um **job** é um script Python que faz uma etapa do trabalho do começo ao fim: lê uma camada, transforma os dados e grava a camada seguinte. Por exemplo, o job Bronze lê a `landing/` e grava a `bronze/`.
 
+## O pipeline deste projeto
+
+São **oito jobs**, um por arquivo (R2). Cada um verifica a camada de que depende
+com `exigir_camada` e para com uma mensagem clara se ela não existir.
+
+| Ordem | Arquivo | Lê | Grava |
+| --- | --- | --- | --- |
+| 1 | `bronze.py` | `landing/` | `bronze/` (append-only, schema explícito, proveniência — R4) |
+| 2 | `silver.py` | `bronze/` | `silver/event_name=…`, `silver/itens/`, `silver/eventos_rejeitados/` (R5–R10) |
+| 3 | `gold_funil.py` | `silver/` | `gold/funil_compra`, `gold/funil_lead` |
+| 4 | `gold_engajamento.py` | `silver/` | `gold/sessoes`, `gold/retencao_video`, `gold/buscas_faq`, `gold/saidas_downloads` |
+| 5 | `gold_receita.py` | `silver/` | `gold/receita_diaria`, `gold/taxa_reembolso`, `gold/adesao_order_bump`, `gold/lead_para_compra` |
+| 6 | `gold_ml.py` | `silver/` | `gold/propensao_sessao`, `gold/metricas_modelo`, `gold/segmentos_visitantes` (+ `_perfil`) |
+| 7 | `gold_mapa_calor.py` | `silver/` | `gold/mapa_calor_cliques`, `gold/mapa_calor_rolagem` |
+| 8 | `exportar_mapa_calor.py` | `gold/mapa_calor_*` | `site/mapa_calor.js` (R11) |
+
+### Rodar o pipeline inteiro (R3)
+
+O `rodar_tudo.py` executa os oito jobs na ordem acima. Ele **não** gera dados: a
+landing precisa já existir (use o gerador para populá-la).
+
+```bash
+docker compose run --rm app python pipeline/rodar_tudo.py
+```
+
+### Rodar um job isolado
+
+```bash
+docker compose run --rm app python pipeline/<job>.py
+# exemplos:
+docker compose run --rm app python pipeline/bronze.py
+docker compose run --rm app python pipeline/gold_funil.py
+```
+
+Depois do job de exportação (passo 8), abra `site/index.html` no navegador e
+clique em **Mapa de calor** no painel lateral.
+
 ## Como rodar um job
 
 Todo código Python roda no contêiner `app`, que já tem PySpark 4.2.0 e o conector `s3a`:
