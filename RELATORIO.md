@@ -147,20 +147,27 @@ Métricas no conjunto de teste (`metricas_modelo`), referentes à classe positiv
 
 | Métrica | Valor |
 | --- | --- |
-| AUC | 0,94 |
+| AUC | 0,934 |
+| F1 (classe positiva) | 0,494 |
+| Precisão (classe positiva) | 0,329 |
+| Recall (classe positiva) | 0,990 |
 
-> **Observação importante (ver seção de qualidade):** compradores são raros
-> (~5% das sessões). Na primeira versão do modelo, sem balanceamento, precisão e
-> recall da classe positiva saíam **0,0** mesmo com AUC alto — o modelo ordenava
-> bem, mas nunca cruzava o corte de 0,5 e previa sempre "não comprou". Apliquei
-> **peso de classe** (inversamente proporcional à frequência) para que o modelo
-> passe a apontar compradores; os valores de F1, precisão e recall em
-> `metricas_modelo` são os da versão balanceada. Atualize os números desta tabela
-> com a saída do job após o rebalanceamento.
+> **Nota sobre o balanceamento (ver seção de qualidade):** compradores são raros
+> (~5% das sessões). Sem balanceamento, precisão e recall da classe positiva
+> saíam **0,0** mesmo com AUC alto — o modelo ordenava bem, mas nunca cruzava o
+> corte de 0,5 e previa sempre "não comprou". Com **peso de classe**
+> (inversamente proporcional à frequência), o modelo passou a apontar
+> compradores, e as métricas acima são da versão balanceada.
 
-O AUC de 0,94 indica que o modelo **ranqueia muito bem**: dado um par (comprador,
-não-comprador), ele acerta a ordem em ~94% dos casos. Na prática, isso permite
-priorizar as sessões com maior `probabilidade_compra` para ações de remarketing.
+O AUC de **0,934** indica que o modelo **ranqueia muito bem**: dado um par
+(comprador, não-comprador), ele acerta a ordem em ~93% dos casos. Depois do
+balanceamento, o **recall é de 0,990** — o modelo praticamente não deixa escapar
+um comprador — ao custo de uma **precisão de 0,329**: entre as sessões que ele
+aponta como prováveis compras, cerca de 1 em 3 compra de fato. Esse é o
+compromisso esperado num problema desbalanceado e é o perfil certo para
+*remarketing*: prefere-se abordar alguns não-compradores a mais (precisão menor) a
+perder compradores reais (recall alto). Na prática, priorize as sessões com maior
+`probabilidade_compra` para ação comercial.
 
 ### Segmentos de visitantes
 
