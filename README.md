@@ -68,3 +68,6 @@ O diagrama separa o que já existe do que é seu: as setas mostram quem grava e 
 1. Prepare o ambiente: [SETUP.md](SETUP.md). Ele explica o Docker passo a passo, mesmo que você nunca tenha usado.
 2. Popule a landing: `docker compose run --rm app python gerador/gerar_eventos.py`. Esse comando cria os eventos simulados e grava no S3 local.
 3. Leia o [enunciado](docs/ENUNCIADO.md) e construa o pipeline em `pipeline/` (veja [pipeline/README.md](pipeline/README.md)). O enunciado tem uma seção "Por onde começar" com a ordem sugerida de trabalho.
+
+## Repositório
+[https://github.com/Matheus-S-Cruz/big_data_final](https://github.com/Matheus-S-Cruz/big_data_final)
