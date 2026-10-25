@@ -69,7 +69,7 @@ O diagrama separa o que já existe do que é seu: as setas mostram quem grava e 
 2. Popule a landing: `docker compose run --rm app python gerador/gerar_eventos.py`. Esse comando cria os eventos simulados e grava no S3 local.
 3. Leia o [enunciado](docs/ENUNCIADO.md) e construa o pipeline em `pipeline/` (veja [pipeline/README.md](pipeline/README.md)). O enunciado tem uma seção "Por onde começar" com a ordem sugerida de trabalho.
 
-## Evidências da entrega (onde achar cada prova pedida no AVA)
+## Evidências da entrega (as prova que foram pedidas no AVA)
 
 As provas ficam em três pastas, uma por camada do medalhão:
 [`bronze_provas/`](bronze_provas), [`silver_provas/`](silver_provas) e
