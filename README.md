@@ -71,3 +71,27 @@ O diagrama separa o que já existe do que é seu: as setas mostram quem grava e 
 
 ## Repositório
 [https://github.com/Matheus-S-Cruz/big_data_final](https://github.com/Matheus-S-Cruz/big_data_final)
+
+## Evidências da entrega (onde achar cada prova pedida no AVA)
+
+As provas ficam em três pastas, uma por camada do medalhão:
+[`bronze_provas/`](bronze_provas), [`silver_provas/`](silver_provas) e
+[`gold_provas/`](gold_provas). A Gold reúne as evidências dos cinco jobs Gold
+(funil, engajamento, receita, ML e mapa de calor).
+
+O AVA pede seis itens. A tabela abaixo diz onde encontrar cada um.
+
+| Item pedido no AVA | Onde está |
+| --- | --- |
+| **Print da tela de bucket** | `gold_provas/buckets.png` (tela S3 · Buckets do explorador; mostra o bucket `datalake-tracking` com as camadas) |
+| **Print do Data Catalog com o schema** (ex.: `bronze.eventos`) | `gold_provas/banco_de_dados.png` (tela Glue · Data Catalog; mostra os bancos `landing`, `bronze`, `silver`, `gold` e suas tabelas) |
+| **Print da execução com sucesso do ETL Job** | Bronze: `bronze_provas/execucao_bronze.png` · Silver: `silver_provas/execucao_silver.png` · Gold: `gold_provas/jobs.png`, `gold_provas/jobs_final.png` e `gold_provas/execucao_mapa_calor.png` |
+| **Arquivo do ETL Job** (ex.: `bronze.py`) | `pipeline/bronze.py`, `pipeline/silver.py`, `pipeline/gold_funil.py`, `pipeline/gold_engajamento.py`, `pipeline/gold_receita.py`, `pipeline/gold_ml.py`, `pipeline/gold_mapa_calor.py`, `pipeline/exportar_mapa_calor.py` e o script de sequência `pipeline/rodar_tudo.py` |
+| **Print da consulta do Athena** (query executada) | Bronze: `bronze_provas/consultas_bronze_1.png`, `consultas_bronze_2.png` · Silver: `silver_provas/consultas_silver.png` · Gold: um print por tabela em `gold_provas/` (`funil_total.png`, `lead_canal.png`, `sessoes.png`, `retencao_video.png`, `buscas_faq.png`, `saidas_downloads.png`, `receita_diaria.png`, `taxa_reembolso.png`, `adesao_order.png`, `lead_compra.png`, `propensao_sessao.png`, `metricas_modelo.png`, `segmentos_visitantes.png`, `mapa_cliques.png`, `mapa_rolagem.png`) |
+| **CSV com os dados criados pelo Athena** | Bronze: `bronze_provas/resultado_bronze.csv` · Silver: `silver_provas/resultado_silver.csv` · Gold: um CSV por tabela em `gold_provas/` (`compra_total.csv`, `lead_canal.csv`, `sessoes.csv`, `retencao_video.csv`, `buscas_faq.csv`, `saidas_downloads.csv`, `receita_diaria.csv`, `taxa_reembolso.csv`, `adesao_order.csv`, `lead_compra.csv`, `propessao_sessao.csv`, `metricas_modelo.csv`, `segmentos_visitantes.csv`, `mapa_cliques.csv`, `mapa_rolagem.csv`) |
+
+Evidências extras na Gold: `gold_provas/mapa_calor.png` e `gold_provas/prova_mapa.png`
+mostram o mapa de calor aceso no site (requisito R11).
+
+As respostas de negócio (as quatro perguntas) e a análise de qualidade do dado
+estão em [`RELATORIO.md`](RELATORIO.md).
